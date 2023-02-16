@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tpoad.morfandoInc.entity.bienes;
 import com.tpoad.morfandoInc.service.bienesService;
+
+import exceptions.RequestException;
 
 
 
@@ -30,6 +33,9 @@ public class bienesController {
 	
 	@PostMapping
 	public bienes insertar(@RequestBody bienes bienes) {
+		if(bienes.getSerie().equals("")) {
+			throw new RequestException("P-401","se necesita el nro de serie");
+		}
 		return bienesservice.insertar(bienes);
 	}
 	
@@ -41,6 +47,11 @@ public class bienesController {
 	@DeleteMapping
 	public void eliminar(@RequestBody bienes bienes) {
 		bienesservice.eliminar(bienes);
+	}
+	
+	@GetMapping("/cantidad")
+	public Long CantBienesByPallet(@RequestParam String pallet) {
+		return bienesservice.countByPallet(pallet);
 	}
 	
 	

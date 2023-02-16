@@ -8,16 +8,19 @@ import org.springframework.stereotype.Service;
 import com.tpoad.morfandoInc.entity.bienes;
 import com.tpoad.morfandoInc.repo.bienesRepository;
 
+import exceptions.RegistroExistenteException;
+
 @Service
 public class bienesService {
 	
 	@Autowired
 	private bienesRepository bienesrepository;
 	
-	
-	
 	public bienes insertar(bienes bienes) {
-		return bienesrepository.save(bienes); // devuelve el codigo con el que fue insertado en la bd
+		if(bienesrepository.findBySerie(bienes.getSerie()) != null) {
+			throw new RegistroExistenteException("El numero de serie ya existe");
+		}
+		return  bienesrepository.save(bienes);
 	}
 	
 	public bienes actualizar(bienes bienes) {
@@ -30,5 +33,9 @@ public class bienesService {
 	
 	public void eliminar(bienes bienes) {
 		bienesrepository.delete(bienes);
+	}
+
+	public Long countByPallet(String pallet) {
+		return bienesrepository.countByPallet(pallet);
 	}
 }
