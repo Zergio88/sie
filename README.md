@@ -14,3 +14,8 @@ Spring Data JPA
 Sql Server Driver
 Dev tool
 
+TODO:
+    add metrics
+    add some exceptions
+    add necessary endpoints
+
