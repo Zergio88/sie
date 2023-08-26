@@ -1,5 +1,6 @@
 package com.educar.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,5 +23,8 @@ public interface bienesRepository extends JpaRepository<bienes, Long>{
 
 	  	@Query("SELECT COUNT(*) d from bienes d WHERE d.pallet = :pallet AND d.piso = :piso")
 		Long CantPiso(@Param("pallet") String pallet,@Param("piso") int piso);
+
+		@Query("SELECT d from bienes d WHERE d.pallet = :pallet")
+		List<bienes> regPorPallet(@Param("pallet") String pallet);
 
 }

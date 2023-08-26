@@ -63,5 +63,9 @@ public class bienesController {
 	public ResponseEntity<List<Map<String,String>>> cantPisosByPallet(@RequestParam String pallet) {
 		return bienesservice.cantPisosByPallet(pallet);
 	}
-	
+	@GetMapping("/regPorPallet")
+	public List<bienes> listaPorPallet(@RequestParam String pallet) {
+		return bienesservice.listaPorPallet(pallet);
+	}
+
 }

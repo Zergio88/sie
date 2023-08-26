@@ -62,4 +62,8 @@ public class bienesService {
 		
 		return ResponseEntity.ok(resultado);
 	}
+
+	public List<bienes> listaPorPallet(String pallet){
+		return bienesrepository.regPorPallet(pallet);
+	}
 }
