@@ -29,11 +29,7 @@ public class bienesService {
 	public bienes actualizar(bienes bienes) {
 		return bienesrepository.save(bienes);
 	}
-	
-	public List<bienes> listar(){
-		return bienesrepository.findAll();
-	}
-	
+
 	public void eliminar(bienes bienes) {
 		bienesrepository.delete(bienes);
 	}
@@ -63,7 +59,11 @@ public class bienesService {
 		return ResponseEntity.ok(resultado);
 	}
 
-	public List<bienes> listaPorPallet(String pallet){
-		return bienesrepository.regPorPallet(pallet);
+	public List<bienes> registroPorPallet(String pallet){
+		return bienesrepository.registroPorPallet(pallet);
+	}
+
+	public List<String> listadoDePallet(){
+		return bienesrepository.listadoDePallet();
 	}
 }

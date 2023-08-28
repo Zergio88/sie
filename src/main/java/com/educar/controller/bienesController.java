@@ -2,7 +2,6 @@ package com.educar.controller;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,14 +25,9 @@ public class bienesController {
 	@Autowired
 	private bienesService bienesservice;
 
-	@GetMapping
-	public List<bienes> listar(){
-		return bienesservice.listar();
-	}
-	
 	@PostMapping
 	public bienes insertar(@RequestBody bienes bienes) {
-		if(bienes.getSerie().equals("")) {
+		if(bienes.getSerie().isEmpty()) {
 			throw new RequestException("P-401","se necesita el nro de serie");
 		}
 		return bienesservice.insertar(bienes);
@@ -64,8 +58,12 @@ public class bienesController {
 		return bienesservice.cantPisosByPallet(pallet);
 	}
 	@GetMapping("/regPorPallet")
-	public List<bienes> listaPorPallet(@RequestParam String pallet) {
-		return bienesservice.listaPorPallet(pallet);
+	public List<bienes> registroPorPallet(@RequestParam String pallet) {
+		return bienesservice.registroPorPallet(pallet);
 	}
 
+	@GetMapping("/listaDePallets")
+	public List<String> listadoDePallet() {
+		return bienesservice.listadoDePallet();
+	}
 }
