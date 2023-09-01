@@ -29,4 +29,7 @@ public interface bienesRepository extends JpaRepository<bienes, Long>{
 		@Query("SELECT DISTINCT pallet FROM bienes")
 		List<String> listadoDePallet();
 
+		@Query("SELECT d FROM bienes d WHERE d.pallet = :pallet ORDER BY d.fechayhora DESC LIMIT 20")
+		List<bienes> ultimosRegistros(@Param("pallet") String serie);
+
 }

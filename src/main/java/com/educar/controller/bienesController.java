@@ -66,4 +66,9 @@ public class bienesController {
 	public List<String> listadoDePallet() {
 		return bienesservice.listadoDePallet();
 	}
+
+	@GetMapping("/ultimosRegistros")
+	public List<bienes> ultimosRegistros(@RequestParam String pallet) {
+		return bienesservice.ultimosReg(pallet);
+	}
 }

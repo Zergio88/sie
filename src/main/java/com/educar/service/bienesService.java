@@ -66,4 +66,8 @@ public class bienesService {
 	public List<String> listadoDePallet(){
 		return bienesrepository.listadoDePallet();
 	}
+
+	public List<bienes> ultimosReg(String pallet){
+		return bienesrepository.ultimosRegistros(pallet);
+	}
 }
