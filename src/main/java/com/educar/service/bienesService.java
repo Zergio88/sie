@@ -70,4 +70,28 @@ public class bienesService {
 	public List<bienes> ultimosReg(String pallet){
 		return bienesrepository.ultimosRegistros(pallet);
 	}
+
+	/*
+	*     public List<TuEntidad> buscarPorPatrones(String patron1, String patron2) {
+        if (patron1 != null && patron2 != null) {
+            // Si se proporcionan ambos patrones, buscar en ambas columnas
+            return tuRepositorio.findByColumna1AndColumna2(patron1, patron2);
+        } else if (patron1 != null) {
+            // Si solo se proporciona el primer patrón, buscar solo en la primera columna
+            return tuRepositorio.findByColumna1(patron1);
+        } else if (patron2 != null) {
+            // Si solo se proporciona el segundo patrón, buscar solo en la segunda columna
+            return tuRepositorio.findByColumna2(patron2);
+        } else {
+            // Si no se proporcionan patrones, devolver todos los registros (o manejar como desees)
+            return tuRepositorio.findAll();
+        }
+    }
+	*
+	*
+	* */
+	public List<bienes> byPatrones(String patron) {
+
+		return bienesrepository.findByPatrones(patron);
+	}
 }

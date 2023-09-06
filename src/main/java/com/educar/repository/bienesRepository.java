@@ -32,4 +32,7 @@ public interface bienesRepository extends JpaRepository<bienes, Long>{
 		@Query("SELECT d FROM bienes d WHERE d.pallet = :pallet ORDER BY d.fechayhora DESC LIMIT 20")
 		List<bienes> ultimosRegistros(@Param("pallet") String serie);
 
+		@Query("SELECT d FROM bienes d WHERE LOWER(d.modelo) LIKE %:patron% OR LOWER(d.serie) LIKE %:patron% OR LOWER(d.estado) LIKE %:patron%")
+		List<bienes> findByPatrones(@Param("patron") String patron);
+
 }

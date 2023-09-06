@@ -71,4 +71,18 @@ public class bienesController {
 	public List<bienes> ultimosRegistros(@RequestParam String pallet) {
 		return bienesservice.ultimosReg(pallet);
 	}
+
+	/*
+
+	@GetMapping("/ByNumeroSerie")
+	public bienes byNumeroSerie(@RequestParam String serie) {
+		return bienesservice.byNumeroSerie(serie);
+	}
+	*/
+
+	/* buscador por patrones de texto */
+	@GetMapping("/bypatrones")
+	public List<bienes> byPatrones(@RequestParam String patron) {
+		return bienesservice.byPatrones(patron);
+	}
 }
